@@ -9,7 +9,7 @@ rm "$backup_dest.tar"
 rm "$backup_dest.tar.gz"
 
 echo "Created a directory $backup_dest"
-mkdir -p $backup_dest $backup_dest/conf $backup_dest/logs $backup_dest/data
+mkdir -p $backup_dest/conf $backup_dest/logs $backup_dest/data
 
 echo "Copying CouchDB configuration files"
 
