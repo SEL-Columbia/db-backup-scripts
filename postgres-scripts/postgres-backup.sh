@@ -2,11 +2,10 @@
 
 today=`date +%Y-%m-%d`
 
-backup_dest="/home/motech/db-backups/postgres/$today"
+parent_dir="/home/motech/db-backups"
+backup_dest="$parent_dir/postgres-$today"
 
-rm -rf $backup_dest
-rm "$backup_dest.tar"
-rm "$backup_dest.tar.gz"
+rm -rf $parent_dir/postgres*
 
 echo "Created a directory $backup_dest"
 
@@ -20,9 +19,9 @@ echo "Archiving the backupfiles"
 
 cd $backup_dest/..
 
-tar -cf "$today.tar" $today
+tar -cf "postgres-$today.tar" "postgres-$today"
 
-gzip "$today.tar"
+gzip "postgres-$today.tar"
 
 rm -rf $backup_dest
 

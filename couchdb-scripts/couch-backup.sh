@@ -2,11 +2,10 @@
 
 today=`date +%Y-%m-%d`
 
-backup_dest="/home/motech/db-backups/couch/$today"
+parent_dir="/home/motech/db-backups"
+backup_dest="$parent_dir/couchdb-$today"
 
-rm -rf $backup_dest
-rm "$backup_dest.tar"
-rm "$backup_dest.tar.gz"
+rm -rf $parent_dir/couchdb*
 
 echo "Created a directory $backup_dest"
 mkdir -p $backup_dest/conf $backup_dest/logs $backup_dest/data
@@ -27,9 +26,9 @@ echo "Archiving the backupfiles"
 
 cd $backup_dest/..
 
-tar -cf "$today.tar" $today
+tar -cf "couchdb-$today.tar" "couchdb-$today"
 
-gzip "$today.tar"
+gzip "couchdb-$today.tar"
 
 rm -rf $backup_dest
 
