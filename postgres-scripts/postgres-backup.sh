@@ -15,13 +15,15 @@ echo "Taking postgres data dump"
 
 pg_dump -h localhost -U postgres drishti > $backup_dest/pg_dump
 
-echo "Archiving the backupfiles"
+echo "Archiving the backup files"
 
 cd $backup_dest/..
 
 tar -cf "postgres-$today.tar" "postgres-$today"
 
-gzip "postgres-$today.tar"
+echo "Zipping and Encrypting the backup files"
+
+echo password | gpg  --batch --no-tty --yes --passphrase-fd 0 -o "postgres-$today.tar.zip" --cipher-algo aes256 --compress-algo zip --symmetric "postgres-$today.tar"
 
 rm -rf $backup_dest
 

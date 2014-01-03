@@ -22,14 +22,17 @@ echo "Copying CouchDB Database files"
 
 cp -rp /var/lib/couchdb $backup_dest/data
 
-echo "Archiving the backupfiles"
+echo "Archiving the backup files"
 
 cd $backup_dest/..
 
 tar -cf "couchdb-$today.tar" "couchdb-$today"
 
-gzip "couchdb-$today.tar"
+echo "Zipping and Encrypting the backup files"
+
+echo password | gpg  --batch --no-tty --yes --passphrase-fd 0 -o "couchdb-$today.tar.zip" --cipher-algo aes256 --compress-algo zip --symmetric "couchdb-$today.tar"
 
 rm -rf $backup_dest
 
 echo "Done archiving $backup_dest directory"
+
