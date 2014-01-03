@@ -30,7 +30,7 @@ tar -cf "couchdb-$today.tar" "couchdb-$today"
 
 echo "Zipping and Encrypting the backup files"
 
-echo password | gpg  --batch --no-tty --yes --passphrase-fd 0 -o "couchdb-$today.tar.zip" --cipher-algo aes256 --compress-algo zip --symmetric "couchdb-$today.tar"
+echo $1 | gpg  --batch --no-tty --yes --passphrase-fd 0 -o "couchdb-$today.tar.zip" --cipher-algo aes256 --compress-algo zip --symmetric "couchdb-$today.tar"
 
 rm -rf $backup_dest
 

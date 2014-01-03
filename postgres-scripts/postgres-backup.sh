@@ -23,7 +23,7 @@ tar -cf "postgres-$today.tar" "postgres-$today"
 
 echo "Zipping and Encrypting the backup files"
 
-echo password | gpg  --batch --no-tty --yes --passphrase-fd 0 -o "postgres-$today.tar.zip" --cipher-algo aes256 --compress-algo zip --symmetric "postgres-$today.tar"
+echo $1 | gpg  --batch --no-tty --yes --passphrase-fd 0 -o "postgres-$today.tar.zip" --cipher-algo aes256 --compress-algo zip --symmetric "postgres-$today.tar"
 
 rm -rf $backup_dest
 
