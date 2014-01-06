@@ -34,5 +34,7 @@ echo $1 | gpg  --batch --no-tty --yes --passphrase-fd 0 -o "couchdb-$today.tar.z
 
 rm -rf $backup_dest
 
+rm -rf "couchdb-$today.tar"
+
 echo "Done archiving $backup_dest directory"
 

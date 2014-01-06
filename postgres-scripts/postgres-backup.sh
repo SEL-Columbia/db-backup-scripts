@@ -27,4 +27,6 @@ echo $1 | gpg  --batch --no-tty --yes --passphrase-fd 0 -o "postgres-$today.tar.
 
 rm -rf $backup_dest
 
+rm -rf "postgres-$today.tar"
+
 echo "Done archiving $backup_dest directory"
