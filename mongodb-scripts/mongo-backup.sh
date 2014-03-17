@@ -2,7 +2,7 @@
 
 today=`date +%Y-%m-%d`
 
-parent_dir="/home/motech/db-backups"
+parent_dir="/home/dristhi/db-backups"
 backup_dest="$parent_dir/mongodb-$today"
 MONGO_DB="bamboo_dev"
 rm -rf $parent_dir/mongodb*
