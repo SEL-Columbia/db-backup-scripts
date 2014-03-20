@@ -73,3 +73,9 @@ The script takes the dump of mongoDB of *bamboo_dev* database.
 **Generated files**
 
 It generates a backup file in the location */home/dristhi/db-backups* and the file's format would be mongodb-YYYY-MM-dd.tar.zip. e.g., mongodb-2014-03-20.tar.zip
+
+**For restoring the backup**
+
+After decompressing and extracting from the archive (follow the instructions as specified for couchDB restore), use the following command to restore the mongoDB with the *bamboo_dev* database dump,
+
+`mongorestore --dbpath dump_file_with_path --db bamboo_dev dump/bamboo_dev`
